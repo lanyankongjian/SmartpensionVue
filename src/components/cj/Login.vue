@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card style="width: 40%;margin: 0 auto;margin-top:10%;">
-    <h2>登录界面</h2><br>
+    <h2>智慧养老</h2><br>
      用户名：<el-input v-model="userName" style="width: 60%;" clearable></el-input><br><br>
      密&nbsp;&nbsp;&nbsp;码：<el-input type="password" v-model="userPass" style="width: 60%;" clearable></el-input><br><br>
      <el-button type="danger" @click="userName='',userPass=''">重置</el-button>
@@ -40,8 +40,12 @@
                     this.$message.error("登录出错，超出判断！")
                   }
                 }else{
+                   this.loading=false
                   this.$message.error("登录错误！")
                 }
+            }).catch(v=>{
+              this.loading=false
+              this.$message.error(v);
             })
           }
         }
